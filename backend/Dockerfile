@@ -1,12 +1,13 @@
 FROM node:20-alpine
 
-# cache bust
+# cache bust 2
 WORKDIR /app
 
 COPY package*.json ./
 COPY prisma ./prisma/
 
 RUN npm ci
+RUN npx prisma generate
 
 COPY . .
 
