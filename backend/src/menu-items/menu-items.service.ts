@@ -74,7 +74,7 @@ export class MenuItemsService {
     const existing = await this.prisma.menuItem.findUnique({ where: { slug: dto.slug } });
     if (existing) throw new ConflictException('Slug already exists');
 
-    const { ingredientIds, ...data } = dto;
+    const { ingredientIds, ...data } = dto as any;
 
     return this.prisma.menuItem.create({
       data: {
