@@ -52,6 +52,7 @@ export default function AdminLayout({ children }: { children: React.ReactNode })
             { href: '/admin/categories', label: '📂 Categories' },
             { href: '/admin/menu-items', label: '🍽️ Menu Items' },
             { href: '/admin/ingredients', label: '🧂 Ingredients' },
+            { href: '/admin/qr-code', label: '📱 QR Code' },
           ].map((link) => (
             <Link
               key={link.href}
