@@ -200,4 +200,4 @@ qr-menu-system/
 ## Author
 
 **Jeremiah** — Full Stack Developer  
-Built as a portfolio project demonstrating full-stack development with modern technologies.
+
