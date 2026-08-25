@@ -40,23 +40,51 @@ export default function MenuPage() {
   );
 
   return (
-    <div className="min-h-screen bg-gray-50">
-      {/* Header */}
-      <div className="bg-white sticky top-0 z-10 shadow-sm">
-        <div className="max-w-2xl mx-auto px-4 py-4 space-y-3">
+    <div className="min-h-screen mamak-bg">
+      {/* Hero Header */}
+      <div
+        className="sticky top-0 z-10 shadow-lg"
+        style={{ background: 'linear-gradient(135deg, #5C1515, #7C1D1D, #9B2D2D)' }}
+      >
+        <div className="max-w-2xl mx-auto px-4 pt-5 pb-4 space-y-3">
+          {/* Restaurant branding */}
           <div className="flex items-center justify-between">
             <div>
-              <h1 className="text-xl font-bold text-gray-900">Our Menu</h1>
-              <p className="text-xs text-gray-500">Tap any item to see details</p>
+              <h1
+                className="font-display text-3xl font-bold tracking-wide"
+                style={{ color: '#D4A84B' }}
+              >
+                JR's Kitchen
+              </h1>
+              <p className="text-xs mt-0.5" style={{ color: '#F5E6D0', opacity: 0.8 }}>
+                🍛 Authentic Mamak Cuisine
+              </p>
             </div>
-            <span className="text-2xl">🍜</span>
+            <div
+              className="w-12 h-12 rounded-full flex items-center justify-center text-2xl shadow-inner"
+              style={{ background: 'rgba(212, 168, 75, 0.2)', border: '2px solid #D4A84B' }}
+            >
+              🍜
+            </div>
           </div>
-          <Input
-            placeholder="Search dishes..."
-            value={searchQuery}
-            onChange={(e) => setSearchQuery(e.target.value)}
-            className="bg-gray-50"
-          />
+
+          {/* Search */}
+          <div className="relative">
+            <span className="absolute left-3 top-1/2 -translate-y-1/2 text-sm">🔍</span>
+            <Input
+              placeholder="Search dishes..."
+              value={searchQuery}
+              onChange={(e) => setSearchQuery(e.target.value)}
+              className="pl-9 border-0 text-sm"
+              style={{
+                background: 'rgba(253, 246, 236, 0.15)',
+                color: '#FDF6EC',
+                backdropFilter: 'blur(4px)',
+              }}
+            />
+          </div>
+
+          {/* Category tabs */}
           {!searchQuery && (
             <CategoryTabs
               categories={categories}
@@ -71,7 +99,16 @@ export default function MenuPage() {
         {/* Featured section */}
         {!searchQuery && selectedCategory === 'all' && featuredItems.length > 0 && (
           <section>
-            <h2 className="text-lg font-bold text-gray-800 mb-4">⭐ Featured Dishes</h2>
+            <div className="flex items-center gap-2 mb-4">
+              <span className="text-xl">⭐</span>
+              <h2
+                className="font-display text-xl font-bold"
+                style={{ color: '#7C1D1D' }}
+              >
+                Featured Dishes
+              </h2>
+              <div className="flex-1 h-px" style={{ background: 'linear-gradient(to right, #C8951A, transparent)' }} />
+            </div>
             <div className="grid grid-cols-2 gap-3">
               {featuredItems.map((item) => (
                 <MenuItemCard key={item.id} item={item} />
@@ -82,28 +119,34 @@ export default function MenuPage() {
 
         {/* Main items */}
         <section>
-          {searchQuery ? (
-            <h2 className="text-lg font-bold text-gray-800 mb-4">
-              Results for "{searchQuery}"
+          <div className="flex items-center gap-2 mb-4">
+            <h2
+              className="font-display text-xl font-bold"
+              style={{ color: '#7C1D1D' }}
+            >
+              {searchQuery
+                ? `Results for "${searchQuery}"`
+                : selectedCategory !== 'all'
+                ? categories.find((c: any) => c.id === selectedCategory)?.name
+                : 'All Items'}
             </h2>
-          ) : selectedCategory !== 'all' ? (
-            <h2 className="text-lg font-bold text-gray-800 mb-4">
-              {categories.find((c: any) => c.id === selectedCategory)?.name}
-            </h2>
-          ) : (
-            <h2 className="text-lg font-bold text-gray-800 mb-4">All Items</h2>
-          )}
+            <div className="flex-1 h-px" style={{ background: 'linear-gradient(to right, #C8951A, transparent)' }} />
+          </div>
 
           {isLoading ? (
             <div className="grid grid-cols-2 gap-3">
               {[...Array(6)].map((_, i) => (
-                <div key={i} className="bg-white rounded-2xl h-64 animate-pulse" />
+                <div
+                  key={i}
+                  className="rounded-2xl h-64 animate-pulse"
+                  style={{ background: '#F5E6D0' }}
+                />
               ))}
             </div>
           ) : displayedItems.length === 0 ? (
-            <div className="text-center py-16 text-gray-400">
+            <div className="text-center py-16" style={{ color: '#9B2D2D' }}>
               <p className="text-4xl mb-3">🍽️</p>
-              <p>No items found</p>
+              <p className="font-display text-lg">No dishes found</p>
             </div>
           ) : (
             <div className="grid grid-cols-2 gap-3">
@@ -113,6 +156,16 @@ export default function MenuPage() {
             </div>
           )}
         </section>
+
+        {/* Footer */}
+        <div className="text-center py-4 border-t" style={{ borderColor: '#F5E6D0' }}>
+          <p className="font-display text-sm" style={{ color: '#C8951A' }}>
+            JR's Kitchen
+          </p>
+          <p className="text-xs mt-1" style={{ color: '#9B2D2D', opacity: 0.6 }}>
+            Authentic Mamak cuisine since day one
+          </p>
+        </div>
       </div>
     </div>
   );
