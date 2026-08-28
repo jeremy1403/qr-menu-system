@@ -40,10 +40,10 @@ export default function MenuPage() {
   );
 
   return (
-    <div className="min-h-screen mamak-bg">
+    <div className="min-h-screen mamak-bg flex flex-col items-center">
       {/* Hero Header - Full Width */}
       <div
-        className="sticky top-0 z-10 shadow-lg"
+        className="sticky top-0 z-10 shadow-lg w-full"
         style={{ background: 'linear-gradient(135deg, #5C1515, #7C1D1D, #9B2D2D)' }}
       >
         <div className="w-full max-w-5xl mx-auto px-6 pt-5 pb-4 space-y-3">
