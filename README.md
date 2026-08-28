@@ -10,7 +10,7 @@ A full-stack digital menu system for restaurants. Customers scan a QR code to br
 ## 📱 Scan to View the Menu
 
 <p align="center">
-  <img src="./assets/qr-code.png" alt="QR Code to view the restaurant menu" width="220">
+  <img src="screenshots\menu-qr-code.png" alt="QR Code to view the restaurant menu" width="220">
 </p>
 
 > 📲 Scan the QR code with your phone to open the live restaurant menu.
