@@ -46,7 +46,7 @@ export default function MenuPage() {
         className="sticky top-0 z-10 shadow-lg w-full"
         style={{ background: 'linear-gradient(135deg, #5C1515, #7C1D1D, #9B2D2D)' }}
       >
-        <div className="max-w-2xl mx-auto px-4 pt-5 pb-4 space-y-3">
+        <div className="max-w-4xl mx-auto px-4 pt-5 pb-4 space-y-3">
           {/* Restaurant branding */}
           <div className="flex items-center justify-between">
             <div>
@@ -95,7 +95,7 @@ export default function MenuPage() {
         </div>
       </div>
 
-      <div className="max-w-2xl mx-auto px-4 py-6 space-y-8">
+      <div className="max-w-4xl mx-auto px-4 py-6 space-y-8">
         {/* Featured section */}
         {!searchQuery && selectedCategory === 'all' && featuredItems.length > 0 && (
           <section>
@@ -109,7 +109,7 @@ export default function MenuPage() {
               </h2>
               <div className="flex-1 h-px" style={{ background: 'linear-gradient(to right, #C8951A, transparent)' }} />
             </div>
-            <div className="grid grid-cols-2 gap-3">
+            <div className="grid grid-cols-2 md:grid-cols-3 gap-3">
               {featuredItems.map((item) => (
                 <MenuItemCard key={item.id} item={item} />
               ))}
@@ -134,7 +134,7 @@ export default function MenuPage() {
           </div>
 
           {isLoading ? (
-            <div className="grid grid-cols-2 gap-3">
+            <div className="grid grid-cols-2 md:grid-cols-3 gap-3">
               {[...Array(6)].map((_, i) => (
                 <div
                   key={i}
