@@ -41,13 +41,12 @@ export default function MenuPage() {
 
   return (
     <div className="min-h-screen mamak-bg">
-      {/* Hero Header */}
+      {/* Hero Header - Full Width */}
       <div
-        className="sticky top-0 z-10 shadow-lg w-full"
+        className="sticky top-0 z-10 shadow-lg"
         style={{ background: 'linear-gradient(135deg, #5C1515, #7C1D1D, #9B2D2D)' }}
       >
-        <div className="max-w-4xl mx-auto px-4 pt-5 pb-4 space-y-3">
-          {/* Restaurant branding */}
+        <div className="w-full max-w-5xl mx-auto px-6 pt-5 pb-4 space-y-3">
           <div className="flex items-center justify-between">
             <div>
               <h1
@@ -68,14 +67,13 @@ export default function MenuPage() {
             </div>
           </div>
 
-          {/* Search */}
           <div className="relative">
             <span className="absolute left-3 top-1/2 -translate-y-1/2 text-sm">🔍</span>
             <Input
               placeholder="Search dishes..."
               value={searchQuery}
               onChange={(e) => setSearchQuery(e.target.value)}
-              className="pl-9 border-0 text-sm"
+              className="pl-9 border-0 text-sm w-full"
               style={{
                 background: 'rgba(253, 246, 236, 0.15)',
                 color: '#FDF6EC',
@@ -84,7 +82,6 @@ export default function MenuPage() {
             />
           </div>
 
-          {/* Category tabs */}
           {!searchQuery && (
             <CategoryTabs
               categories={categories}
@@ -95,21 +92,18 @@ export default function MenuPage() {
         </div>
       </div>
 
-      <div className="max-w-4xl mx-auto px-4 py-6 space-y-8">
-        {/* Featured section */}
+      {/* Main Content - Centered */}
+      <div className="w-full max-w-5xl mx-auto px-6 py-6 space-y-8">
         {!searchQuery && selectedCategory === 'all' && featuredItems.length > 0 && (
           <section>
             <div className="flex items-center gap-2 mb-4">
               <span className="text-xl">⭐</span>
-              <h2
-                className="font-display text-xl font-bold"
-                style={{ color: '#7C1D1D' }}
-              >
+              <h2 className="font-display text-xl font-bold" style={{ color: '#7C1D1D' }}>
                 Featured Dishes
               </h2>
               <div className="flex-1 h-px" style={{ background: 'linear-gradient(to right, #C8951A, transparent)' }} />
             </div>
-            <div className="grid grid-cols-2 md:grid-cols-3 gap-3">
+            <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
               {featuredItems.map((item) => (
                 <MenuItemCard key={item.id} item={item} />
               ))}
@@ -117,13 +111,9 @@ export default function MenuPage() {
           </section>
         )}
 
-        {/* Main items */}
         <section>
           <div className="flex items-center gap-2 mb-4">
-            <h2
-              className="font-display text-xl font-bold"
-              style={{ color: '#7C1D1D' }}
-            >
+            <h2 className="font-display text-xl font-bold" style={{ color: '#7C1D1D' }}>
               {searchQuery
                 ? `Results for "${searchQuery}"`
                 : selectedCategory !== 'all'
@@ -134,13 +124,9 @@ export default function MenuPage() {
           </div>
 
           {isLoading ? (
-            <div className="grid grid-cols-2 md:grid-cols-3 gap-3">
-              {[...Array(6)].map((_, i) => (
-                <div
-                  key={i}
-                  className="rounded-2xl h-64 animate-pulse"
-                  style={{ background: '#F5E6D0' }}
-                />
+            <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
+              {[...Array(8)].map((_, i) => (
+                <div key={i} className="rounded-2xl h-64 animate-pulse" style={{ background: '#F5E6D0' }} />
               ))}
             </div>
           ) : displayedItems.length === 0 ? (
@@ -149,7 +135,7 @@ export default function MenuPage() {
               <p className="font-display text-lg">No dishes found</p>
             </div>
           ) : (
-            <div className="grid grid-cols-2 gap-3">
+            <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
               {displayedItems.map((item) => (
                 <MenuItemCard key={item.id} item={item} />
               ))}
@@ -157,7 +143,6 @@ export default function MenuPage() {
           )}
         </section>
 
-        {/* Footer */}
         <div className="text-center py-4 border-t" style={{ borderColor: '#F5E6D0' }}>
           <p className="font-display text-sm" style={{ color: '#C8951A' }}>
             JR's Kitchen
