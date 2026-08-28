@@ -40,13 +40,13 @@ export default function MenuPage() {
   );
 
   return (
-    <div className="min-h-screen mamak-bg flex flex-col items-center">
+    <div className="min-h-screen mamak-bg">
       {/* Hero Header - Full Width */}
       <div
-        className="sticky top-0 z-10 shadow-lg w-screen"
+        className="sticky top-0 z-10 shadow-lg w-full"
         style={{ background: 'linear-gradient(135deg, #5C1515, #7C1D1D, #9B2D2D)' }}
       >
-        <div className="w-full max-w-5xl mx-auto px-6 pt-5 pb-4 space-y-3">
+        <div className="w-full max-w-5xl mx-auto px-8 pt-5 pb-4 space-y-3">
           <div className="flex items-center justify-between">
             <div>
               <h1
@@ -93,7 +93,7 @@ export default function MenuPage() {
       </div>
 
       {/* Main Content - Centered */}
-      <div className="w-full max-w-5xl mx-auto px-6 py-6 space-y-8">
+      <div className="w-full max-w-5xl mx-auto px-8 py-6 space-y-8">
         {!searchQuery && selectedCategory === 'all' && featuredItems.length > 0 && (
           <section>
             <div className="flex items-center gap-2 mb-4">
