@@ -141,15 +141,6 @@ Open [http://localhost:3000/admin](http://localhost:3000/admin) to access the ad
 
 ---
 
-## Database Schema
-
-```
-users
-categories ──< menu_items >──< menu_item_ingredients >── ingredients
-```
-
----
-
 ## API Endpoints
 
 | Method | Endpoint | Auth | Description |
